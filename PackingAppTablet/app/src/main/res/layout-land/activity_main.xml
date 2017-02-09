@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:divider="#000"
+    android:orientation="horizontal"
+    android:showDividers="middle">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Parked Cars"
+            android:textColor="#fff"
+            android:background="#000"
+            android:gravity="center"/>
+
+        <fragment
+            android:id="@+id/user_fragment"
+            android:name="com.xyz.packingapptablet.Fragments.UserFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Incomming"
+            android:textColor="#fff"
+            android:background="#000"
+            android:gravity="center"/>
+
+        <fragment
+            android:id="@+id/incomming_fragment"
+            android:name="com.xyz.packingapptablet.Fragments.IncommingFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="8"
+        android:baselineAligned="false"
+        android:divider="#000"
+        android:orientation="vertical"
+        android:showDividers="middle">
+
+        <fragment
+            android:id="@+id/notification_fragment"
+            android:name="com.xyz.packingapptablet.Fragments.NotificationFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8"
+            android:baselineAligned="false"
+            android:divider="#000"
+            android:orientation="horizontal"
+            android:showDividers="middle">
+
+            <fragment
+                android:id="@+id/parkhubbays_fragment"
+                android:name="com.xyz.packingapptablet.Fragments.ParkHubBaysFragment"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <fragment
+                android:id="@+id/control_fragment"
+                android:name="com.xyz.packingapptablet.Fragments.ControlFragment"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:baselineAligned="false"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/username_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:paddingLeft="5dp"
+        android:text="Fariz"
+        android:textColor="#fff" />
+
+    <ImageView
+        android:id="@+id/userreliability_imageview"
+        android:layout_width="0dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="3dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/usercar_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:text="PFQ5217"
+        android:textColor="#fff" />
+
+    <TextView
+        android:id="@+id/usercurrent_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:text="4h 2m"
+        android:textColor="#fff" />
+
+</LinearLayout>
