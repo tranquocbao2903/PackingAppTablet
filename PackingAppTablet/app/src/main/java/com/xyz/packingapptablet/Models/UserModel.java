@@ -9,16 +9,19 @@ public class UserModel {
     private String contact;
     private String payment;
     private String reliability;
+    private String distance;
     private CarModel car;
 
-    public UserModel(String name, String contact, String payment, String reliability, CarModel car) {
+
+
+    public UserModel(String name, String contact, String payment, String reliability, CarModel car, String distance) {
         this.name = name;
         this.contact = contact;
         this.payment = payment;
         this.reliability = reliability;
         this.car = car;
+        this.distance = distance;
     }
-
 
     public String getName() {
         return name;
@@ -58,5 +61,13 @@ public class UserModel {
 
     public void setCar(CarModel car) {
         this.car = car;
+    }
+
+    public String getDistance() {
+        return distance;
+    }
+
+    public void setDistance(String distance) {
+        this.distance = distance;
     }
 }

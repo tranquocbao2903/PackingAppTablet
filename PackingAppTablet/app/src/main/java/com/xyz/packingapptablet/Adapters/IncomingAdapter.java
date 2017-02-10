@@ -17,22 +17,22 @@ import java.util.List;
  * Created by bao on 2/9/17.
  */
 
-public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
+public class IncomingAdapter extends RecyclerView.Adapter<IncomingAdapter.ViewHolder> {
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView usernameTextView;
         TextView usercarTextView;
         ImageView userreliabilityImageview;
-        TextView usercurrentTextView;
+        TextView userdistanceincomingTextView;
 
         ViewHolder(View itemView) {
             super(itemView);
 
-            usernameTextView = (TextView) itemView.findViewById(R.id.username_textview);
-            usercarTextView = (TextView) itemView.findViewById(R.id.usercar_textview);
-            userreliabilityImageview = (ImageView) itemView.findViewById(R.id.userreliability_imageview);
-            usercurrentTextView = (TextView) itemView.findViewById(R.id.usercurrent_textview);
+            usernameTextView = (TextView) itemView.findViewById(R.id.usernameincoming_textview);
+            usercarTextView = (TextView) itemView.findViewById(R.id.usercarincoming_textview);
+            userreliabilityImageview = (ImageView) itemView.findViewById(R.id.userreliabilityincoming_imageview);
+            userdistanceincomingTextView = (TextView) itemView.findViewById(R.id.userdistanceincoming_textview);
 
         }
 
@@ -42,7 +42,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     private Context mContext;
 
-    public UserAdapter(Context context, List<UserModel> users) {
+    public IncomingAdapter(Context context, List<UserModel> users) {
         mUsers = users;
         mContext = context;
     }
@@ -52,13 +52,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     }
 
     @Override
-    public UserAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
-        View contactView = inflater.inflate(R.layout.item_user, parent, false);
+        View contactView = inflater.inflate(R.layout.item_incoming, parent, false);
 
         // Return a new holder instance
         return new ViewHolder(contactView);
@@ -73,7 +73,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         TextView usernameTextView = holder.usernameTextView;
         TextView usercarTextView = holder.usercarTextView;
         ImageView userreliabilityImageview = holder.userreliabilityImageview;
-        TextView usercurrentTextView = holder.usercurrentTextView;
+        TextView userdistanceincomingTextView = holder.userdistanceincomingTextView;
 
         String imageName = userModel.getReliability();
         int resID = getContext().getResources().getIdentifier(imageName, "drawable", getContext().getPackageName());
@@ -81,7 +81,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         userreliabilityImageview.setImageResource(resID);
         usernameTextView.setText(userModel.getName());
         usercarTextView.setText(userModel.getCar().getVehicle());
-        usercurrentTextView.setText(userModel.getCar().getCurrent());
+        userdistanceincomingTextView.setText(userModel.getDistance());
 
     }
 

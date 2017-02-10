@@ -41,7 +41,7 @@
 
         <fragment
             android:id="@+id/incomming_fragment"
-            android:name="com.xyz.packingapptablet.Fragments.IncommingFragment"
+            android:name="com.xyz.packingapptablet.Fragments.IncomingFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="6" />

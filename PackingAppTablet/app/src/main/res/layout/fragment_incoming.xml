@@ -2,14 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.xyz.packingapptablet.Fragments.IncommingFragment">
+    tools:context="com.xyz.packingapptablet.Fragments.IncomingFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvIncoming"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#000"
-        android:text="Incomming Fragment"
-        android:textColor="#fff" />
-
+        android:background="#000"/>
 </FrameLayout>
