@@ -3,15 +3,19 @@ package com.xyz.packingapptablet.Adapters;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
+import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
-import android.widget.TextView;
-
-import com.xyz.packingapptablet.R;
+import android.widget.Button;
+import android.widget.GridLayout;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import static android.graphics.Color.GREEN;
 
 public class ParkHubBaysAdapter extends BaseAdapter {
     private Context context;
@@ -33,19 +37,28 @@ public class ParkHubBaysAdapter extends BaseAdapter {
         return 0;
     }
 
-    // create a new ImageView for each item referenced by the Adapter
+
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     public View getView(int position, View convertView, ViewGroup parent) {
-        TextView bayNumber;
+        final Button bayNumber;
         if (convertView == null) {
             // if it's not recycled, initialize some attributes
-            bayNumber = new TextView(context);
-            bayNumber.setLayoutParams(new GridView.LayoutParams(200, 200));
-            bayNumber.setTextSize(26);
-            bayNumber.setTextAlignment(View.TEXT_ALIGNMENT_INHERIT);
-            bayNumber.setBackgroundResource(R.drawable.gridview_border);
+            bayNumber = new Button(context);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(GridLayout.LayoutParams.WRAP_CONTENT, GridLayout.LayoutParams.WRAP_CONTENT);
+            params.gravity = Gravity.CENTER;
+           // bayNumber.setLayoutParams(new GridView.LayoutParams(100, 100));
+            bayNumber.setLayoutParams(params);
+            bayNumber.setTextSize(15);
+            bayNumber.setBackgroundColor(GREEN);
+            bayNumber.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    Toast.makeText(context, bayNumber.getText(), Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+            });
         } else {
-            bayNumber = (TextView) convertView;
+            bayNumber = (Button) convertView;
         }
 
         bayNumber.setText(parkhubBays.get(position));
