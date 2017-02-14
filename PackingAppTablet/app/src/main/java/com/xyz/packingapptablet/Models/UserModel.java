@@ -12,8 +12,6 @@ public class UserModel {
     private String distance;
     private CarModel car;
 
-
-
     public UserModel(String name, String contact, String payment, String reliability, CarModel car, String distance) {
         this.name = name;
         this.contact = contact;

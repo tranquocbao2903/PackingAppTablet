@@ -13,6 +13,7 @@ import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+
 import java.util.ArrayList;
 
 import static android.graphics.Color.GREEN;
@@ -43,6 +44,7 @@ public class ParkHubBaysAdapter extends BaseAdapter {
         final Button bayNumber;
         if (convertView == null) {
             // if it's not recycled, initialize some attributes
+
             bayNumber = new Button(context);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(GridLayout.LayoutParams.WRAP_CONTENT, GridLayout.LayoutParams.WRAP_CONTENT);
             params.gravity = Gravity.CENTER;
@@ -57,6 +59,7 @@ public class ParkHubBaysAdapter extends BaseAdapter {
                     return false;
                 }
             });
+
         } else {
             bayNumber = (Button) convertView;
         }
