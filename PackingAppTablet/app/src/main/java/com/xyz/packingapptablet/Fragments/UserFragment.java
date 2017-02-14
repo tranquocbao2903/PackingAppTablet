@@ -39,13 +39,8 @@ public class UserFragment extends Fragment {
         UserAdapter adapter = new UserAdapter(this.getActivity(), users);
         rvUsers.setAdapter(adapter);
         rvUsers.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-        rvUsers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                UserProfileFragment userProfileFragment = new UserProfileFragment();
-                //getFragmentManager().beginTransaction().add(userProfileFragment).addToBackStack("Back")
-            }
-        });
+
+
         return view;
     }
 
