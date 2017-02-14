@@ -3,13 +3,13 @@ package com.xyz.packingapptablet.Adapters;
 import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.xyz.packingapptablet.Fragments.UserProfileFragment;
 import com.xyz.packingapptablet.Models.UserModel;
@@ -44,9 +44,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         ImageView userreliabilityImageview;
         TextView usercurrentTextView;
         Context viewHolderContext;
-        ViewHolder(Context context, View itemView) {
+        private List<UserModel> users;
+        ViewHolder(Context context, View itemView, List<UserModel> mUsers) {
             super(itemView);
             this.viewHolderContext = context;
+            this.users = mUsers;
             usernameTextView = (TextView) itemView.findViewById(R.id.username_textview);
             usercarTextView = (TextView) itemView.findViewById(R.id.usercar_textview);
             userreliabilityImageview = (ImageView) itemView.findViewById(R.id.userreliability_imageview);
@@ -58,13 +60,17 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         @Override
         public void onClick(View v) {
             UserProfileFragment userProfileFragment = new UserProfileFragment();
+            Bundle bundle = new Bundle();
+            int pos = getAdapterPosition();
+            bundle.putSerializable("userModel",users.get(pos));
+            userProfileFragment.setArguments(bundle);
             FragmentTransaction fragmentTransaction = ((Activity) viewHolderContext).getFragmentManager().beginTransaction();
             fragmentTransaction.add(R.id.user_container, userProfileFragment);
             fragmentTransaction.addToBackStack("User_to_Profile");
             fragmentTransaction.commit();
 
-            int pos = getAdapterPosition();
-            Toast.makeText(viewHolderContext, pos +"", Toast.LENGTH_SHORT).show();
+
+
 
         }
     }
@@ -79,7 +85,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         View contactView = inflater.inflate(R.layout.item_user, parent, false);
 
         // Return a new holder instance
-        return new ViewHolder(mContext, contactView);
+        return new ViewHolder(mContext, contactView,mUsers);
 
     }
 

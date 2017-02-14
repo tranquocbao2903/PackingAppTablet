@@ -1,10 +1,12 @@
 package com.xyz.packingapptablet.Models;
 
+import java.io.Serializable;
+
 /**
  * Created by THUAN on 09/02/2017.
  */
 
-public class CarModel {
+public class CarModel implements Serializable{
     private String type;
     private String vehicle;
     private String status;

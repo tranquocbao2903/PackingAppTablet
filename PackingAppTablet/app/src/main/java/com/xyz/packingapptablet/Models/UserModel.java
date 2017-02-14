@@ -1,10 +1,12 @@
 package com.xyz.packingapptablet.Models;
 
+import java.io.Serializable;
+
 /**
  * Created by THUAN on 09/02/2017.
  */
 
-public class UserModel {
+public class UserModel implements Serializable {
     private String name;
     private String contact;
     private String payment;
