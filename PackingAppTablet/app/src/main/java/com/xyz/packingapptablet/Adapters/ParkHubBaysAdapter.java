@@ -41,7 +41,7 @@ public class ParkHubBaysAdapter extends BaseAdapter {
             bayNumber.setLayoutParams(new GridView.LayoutParams(200, 200));
             bayNumber.setTextSize(26);
             bayNumber.setTextAlignment(View.TEXT_ALIGNMENT_INHERIT);
-            
+
         } else {
             bayNumber = (TextView) convertView;
         }
