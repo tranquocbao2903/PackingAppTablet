@@ -32,16 +32,20 @@ public class UserFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_user, container, false);
 
-        RecyclerView rvUsers = (RecyclerView)view.findViewById(R.id.rvUsers);
+        RecyclerView rvUsers = (RecyclerView) view.findViewById(R.id.rvUsers);
 
         createData();
 
         UserAdapter adapter = new UserAdapter(this.getActivity(), users);
-
         rvUsers.setAdapter(adapter);
-
         rvUsers.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-
+        rvUsers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserProfileFragment userProfileFragment = new UserProfileFragment();
+                //getFragmentManager().beginTransaction().add(userProfileFragment).addToBackStack("Back")
+            }
+        });
         return view;
     }
 
@@ -52,19 +56,19 @@ public class UserFragment extends Fragment {
 
         CarModel carModel02 = new CarModel("Camry", "QWCX0932", "Parked", "242", "1h 56m", "No shows");
 
-        UserModel userModel02 = new UserModel("Thuan", "0932615814", "MasterCard", "sad", carModel02,"20.65m");
+        UserModel userModel02 = new UserModel("Thuan", "0932615814", "MasterCard", "sad", carModel02, "20.65m");
 
         CarModel carModel03 = new CarModel("Chevorlet", "NBGF1234", "Parked", "242", "12h 20m", "No shows");
 
-        UserModel userModel03 = new UserModel("Vi", "0908585128", "Paypal", "smile", carModel03,"25.8m");
+        UserModel userModel03 = new UserModel("Vi", "0908585128", "Paypal", "smile", carModel03, "25.8m");
 
         CarModel carModel04 = new CarModel("Martin 307", "KJGS4567", "Parked", "242", "3h 09m", "No shows");
 
-        UserModel userModel04 = new UserModel("Binh", "0909124164", "Paypal", "confused", carModel04,"30m");
+        UserModel userModel04 = new UserModel("Binh", "0909124164", "Paypal", "confused", carModel04, "30m");
 
         CarModel carModel05 = new CarModel("Ford", "DFTY8765", "Parked", "242", "6h 12m", "No shows");
 
-        UserModel userModel05 = new UserModel("Phuong", "0932819991", "Paypal", "sad", carModel05,"32.5m");
+        UserModel userModel05 = new UserModel("Phuong", "0932819991", "Paypal", "sad", carModel05, "32.5m");
 
         CarModel carModel06 = new CarModel("Ford", "MNBV3542", "Parked", "242", "9h 34m", "No shows");
 
