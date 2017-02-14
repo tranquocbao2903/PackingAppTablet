@@ -1,5 +1,7 @@
 package com.xyz.packingapptablet.Adapters;
 
+import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,7 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.xyz.packingapptablet.Fragments.UserProfileFragment;
 import com.xyz.packingapptablet.Models.UserModel;
 import com.xyz.packingapptablet.R;
 
@@ -19,36 +23,50 @@ import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
-
-        TextView usernameTextView;
-        TextView usercarTextView;
-        ImageView userreliabilityImageview;
-        TextView usercurrentTextView;
-
-        ViewHolder(View itemView) {
-            super(itemView);
-
-            usernameTextView = (TextView) itemView.findViewById(R.id.username_textview);
-            usercarTextView = (TextView) itemView.findViewById(R.id.usercar_textview);
-            userreliabilityImageview = (ImageView) itemView.findViewById(R.id.userreliability_imageview);
-            usercurrentTextView = (TextView) itemView.findViewById(R.id.usercurrent_textview);
-
-        }
-
-    }
 
     private List<UserModel> mUsers;
+    private Activity mContext;
 
-    private Context mContext;
-
-    public UserAdapter(Context context, List<UserModel> users) {
+    public UserAdapter(Activity context, List<UserModel> users) {
         mUsers = users;
         mContext = context;
     }
 
     private Context getContext() {
         return mContext;
+    }
+
+
+    static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        TextView usernameTextView;
+        TextView usercarTextView;
+        ImageView userreliabilityImageview;
+        TextView usercurrentTextView;
+        Context viewHolderContext;
+        ViewHolder(Context context, View itemView) {
+            super(itemView);
+            this.viewHolderContext = context;
+            usernameTextView = (TextView) itemView.findViewById(R.id.username_textview);
+            usercarTextView = (TextView) itemView.findViewById(R.id.usercar_textview);
+            userreliabilityImageview = (ImageView) itemView.findViewById(R.id.userreliability_imageview);
+            usercurrentTextView = (TextView) itemView.findViewById(R.id.usercurrent_textview);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            UserProfileFragment userProfileFragment = new UserProfileFragment();
+            FragmentTransaction fragmentTransaction = ((Activity) viewHolderContext).getFragmentManager().beginTransaction();
+            fragmentTransaction.add(R.id.user_container, userProfileFragment);
+            fragmentTransaction.addToBackStack("User_to_Profile");
+            fragmentTransaction.commit();
+
+            int pos = getAdapterPosition();
+            Toast.makeText(viewHolderContext, pos +"", Toast.LENGTH_SHORT).show();
+
+        }
     }
 
     @Override
@@ -61,7 +79,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         View contactView = inflater.inflate(R.layout.item_user, parent, false);
 
         // Return a new holder instance
-        return new ViewHolder(contactView);
+        return new ViewHolder(mContext, contactView);
 
     }
 
@@ -89,4 +107,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public int getItemCount() {
         return mUsers.size();
     }
+
+
 }
