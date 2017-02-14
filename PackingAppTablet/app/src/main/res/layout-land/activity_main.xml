@@ -7,11 +7,12 @@
     android:orientation="horizontal">
 
     <LinearLayout
+        android:id="@+id/user_container"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="2"
         android:orientation="vertical"
-        android:paddingRight="1dp">
+        android:paddingRight="2dp">
 
         <TextView
             android:layout_width="match_parent"
