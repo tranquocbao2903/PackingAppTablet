@@ -9,8 +9,6 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
 
-import com.xyz.packingapptablet.R;
-
 import java.util.ArrayList;
 
 public class ParkHubBaysAdapter extends BaseAdapter {
@@ -43,7 +41,7 @@ public class ParkHubBaysAdapter extends BaseAdapter {
             bayNumber.setLayoutParams(new GridView.LayoutParams(200, 200));
             bayNumber.setTextSize(26);
             bayNumber.setTextAlignment(View.TEXT_ALIGNMENT_INHERIT);
-            bayNumber.setBackgroundResource(R.drawable.gridview_border);
+            //bayNumber.setBackgroundResource(R.drawable.gridview_border);
         } else {
             bayNumber = (TextView) convertView;
         }
