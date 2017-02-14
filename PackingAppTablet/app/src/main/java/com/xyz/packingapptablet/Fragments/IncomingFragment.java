@@ -71,13 +71,14 @@ public class IncomingFragment extends Fragment {
             @Override
             public void onReceive(Context context, Intent intent) {
 
+                updateUI();
 
-                Bundle extras = intent.getExtras();
-                if (extras != null) {
-                    if(extras.containsKey("dataReceived")){
-                        updateUI();
-                    }
-                }
+//                Bundle extras = intent.getExtras();
+//                if (extras != null) {
+//                    if(extras.containsKey("dataReceived")){
+//
+//                    }
+//                }
 
             }
         };
