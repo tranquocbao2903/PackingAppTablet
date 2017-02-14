@@ -16,6 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <receiver android:name=".BroadcastReceivers.PackingAppBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="PackingAppBroadcast" >
+                </action>
+            </intent-filter>
+        </receiver>
+        <!--<service android:name=".Services.IncommingUserService" ></service>-->
     </application>
 
 </manifest>

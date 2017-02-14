@@ -1,6 +1,10 @@
 package com.xyz.packingapptablet.Fragments;
 
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.xyz.packingapptablet.Adapters.IncomingAdapter;
 import com.xyz.packingapptablet.Models.CarModel;
@@ -23,10 +28,17 @@ public class IncomingFragment extends Fragment {
 
     ArrayList<UserModel> users = new ArrayList<>();
 
+    private BroadcastReceiver mReceiver;
+
     public IncomingFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,7 +55,39 @@ public class IncomingFragment extends Fragment {
         rvIncoming.setAdapter(adapter);
 
         rvIncoming.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        IntentFilter intentFilter = new IntentFilter(
+                "PackingAppBroadcast");
+
+        mReceiver = new BroadcastReceiver() {
+
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+
+                Bundle extras = intent.getExtras();
+                if (extras != null) {
+                    if(extras.containsKey("dataReceived")){
+                        updateUI();
+                    }
+                }
+
+            }
+        };
+        //registering our receiver
+        getActivity().registerReceiver(mReceiver, intentFilter);
+
+    }
+
+    void updateUI() {
+        Toast.makeText(getContext(), "UI updated", Toast.LENGTH_SHORT).show();
     }
 
     void createData() {
