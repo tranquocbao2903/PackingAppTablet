@@ -28,51 +28,30 @@ public class UserFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
         View view = inflater.inflate(R.layout.fragment_user, container, false);
-
         RecyclerView rvUsers = (RecyclerView) view.findViewById(R.id.rvUsers);
-
         createData();
-
         UserAdapter adapter = new UserAdapter(this.getActivity(), users);
         rvUsers.setAdapter(adapter);
         rvUsers.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-
-
         return view;
     }
 
     void createData() {
         CarModel carModel01 = new CarModel("Ford", "PWER7841", "Parked", "242", "2h 34m", "No shows");
-
         UserModel userModel01 = new UserModel("Bao", "0932819991", "Paypal", "confused", carModel01, "15.9m");
-
         CarModel carModel02 = new CarModel("Camry", "QWCX0932", "Parked", "242", "1h 56m", "No shows");
-
         UserModel userModel02 = new UserModel("Thuan", "0932615814", "MasterCard", "sad", carModel02, "20.65m");
-
         CarModel carModel03 = new CarModel("Chevorlet", "NBGF1234", "Parked", "242", "12h 20m", "No shows");
-
         UserModel userModel03 = new UserModel("Vi", "0908585128", "Paypal", "smile", carModel03, "25.8m");
-
         CarModel carModel04 = new CarModel("Martin 307", "KJGS4567", "Parked", "242", "3h 09m", "No shows");
-
         UserModel userModel04 = new UserModel("Binh", "0909124164", "Paypal", "confused", carModel04, "30m");
-
         CarModel carModel05 = new CarModel("Ford", "DFTY8765", "Parked", "242", "6h 12m", "No shows");
-
         UserModel userModel05 = new UserModel("Phuong", "0932819991", "Paypal", "sad", carModel05, "32.5m");
-
         CarModel carModel06 = new CarModel("Ford", "MNBV3542", "Parked", "242", "9h 34m", "No shows");
-
         UserModel userModel06 = new UserModel("Thanh", "0837623818", "Paypal", "smile", carModel06, "36.4m");
-
         CarModel carModel07 = new CarModel("Ford", "TYRE9865", "Parked", "242", "15h 26m", "No shows");
-
         UserModel userModel07 = new UserModel("Thien", "0839691368", "Paypal", "confused", carModel07, "40.25m");
-
         users.add(userModel01);
         users.add(userModel02);
         users.add(userModel03);

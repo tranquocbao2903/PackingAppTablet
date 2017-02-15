@@ -34,57 +34,31 @@ public class IncomingFragment extends Fragment {
         // Required empty public constructor
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_incoming, container, false);
-
         RecyclerView rvIncoming = (RecyclerView) view.findViewById(R.id.rvIncoming);
-
         createData();
-
         IncomingAdapter adapter = new IncomingAdapter(this.getActivity(), users);
-
         rvIncoming.setAdapter(adapter);
-
         rvIncoming.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-
         return view;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-
         IntentFilter intentFilter = new IntentFilter(
                 "PackingAppBroadcast");
-
         mReceiver = new BroadcastReceiver() {
-
             @Override
             public void onReceive(Context context, Intent intent) {
-
                 updateUI();
-
-//                Bundle extras = intent.getExtras();
-//                if (extras != null) {
-//                    if(extras.containsKey("dataReceived")){
-//
-//                    }
-//                }
-
             }
         };
-        //registering our receiver
         getActivity().registerReceiver(mReceiver, intentFilter);
-
     }
 
     @Override
@@ -97,15 +71,18 @@ public class IncomingFragment extends Fragment {
         Toast.makeText(getContext(), "UI updated", Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        getActivity().unregisterReceiver(mReceiver);
+
+    }
+
     void createData() {
         CarModel carModel01 = new CarModel("Dylan", "ABC12345", "Parked", "242", "2h 34m", "No shows");
-
         UserModel userModel01 = new UserModel("Bao", "0932819991", "Paypal", "confused", carModel01, "15.9m");
-
         CarModel carModel02 = new CarModel("BMW", "XYZ78912", "Parked", "242", "1h 56m", "No shows");
-
         UserModel userModel02 = new UserModel("Thuan", "0932615814", "MasterCard", "sad", carModel02, "20.65m");
-
         users.add(userModel01);
         users.add(userModel02);
 

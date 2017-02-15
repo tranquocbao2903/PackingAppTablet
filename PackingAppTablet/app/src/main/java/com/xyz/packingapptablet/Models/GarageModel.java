@@ -7,8 +7,8 @@ import java.util.ArrayList;
  */
 
 public class GarageModel {
-     private ArrayList<Integer> parkHubBays;
-     private Integer baysAvailable;
+    private ArrayList<Integer> parkHubBays;
+    private Integer baysAvailable;
 
     public ArrayList<Integer> getParkHubBays() {
         return parkHubBays;

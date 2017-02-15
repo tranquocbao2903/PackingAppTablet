@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -43,30 +42,21 @@ public class ParkHubBaysAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         final Button bayNumber;
         if (convertView == null) {
-            // if it's not recycled, initialize some attributes
-
             bayNumber = new Button(context);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(GridLayout.LayoutParams.WRAP_CONTENT, GridLayout.LayoutParams.WRAP_CONTENT);
             params.gravity = Gravity.CENTER;
-            // bayNumber.setLayoutParams(new GridView.LayoutParams(100, 100));
             bayNumber.setLayoutParams(params);
             bayNumber.setTextSize(15);
             bayNumber.setBackgroundColor(GREEN);
-            bayNumber.setOnTouchListener(new View.OnTouchListener() {
+            bayNumber.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    //Toast.makeText(context, bayNumber.getText(), Toast.LENGTH_SHORT).show();
-//                    Intent intent = new Intent(context, IncommingUserService.class);
-//                    intent.putExtra ("licensePlates", bayNumber.getText().toString());
-//                    context.startService(intent);
+                public void onClick(View v) {
                     Intent intent = new Intent();
                     intent.setAction("PackingAppBroadcast");
                     intent.putExtra("dataReceived", bayNumber.getText().toString());
                     context.sendBroadcast(intent);
-                    return false;
                 }
             });
-
         } else {
             bayNumber = (Button) convertView;
         }
