@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="#000"
     android:baselineAligned="false"
     android:orientation="horizontal"
     tools:context="com.xyz.packingapptablet.Fragments.NotificationFragment">
@@ -24,7 +24,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="User Profile" />
+                android:text="User Profile"
+                android:textColor="#fff" />
 
             <ImageView
                 android:id="@+id/userprofile_reliability_imageview"
@@ -57,12 +58,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
+                android:textColor="#fff"
                 android:textSize="20sp" />
+
             <TextView
                 android:id="@+id/userprofile_contact_textview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
+                android:textColor="#fff"
                 android:textSize="20sp" />
 
         </LinearLayout>
@@ -71,11 +75,11 @@
 
     <ImageView
         android:id="@+id/userprofile_back_button"
-        android:layout_margin="10dp"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/leftarrow"
         android:padding="20dp"
-        android:background="@drawable/back"
         android:textSize="26sp" />
 
 </FrameLayout>
