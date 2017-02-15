@@ -61,12 +61,6 @@ public class IncomingFragment extends Fragment {
         getActivity().registerReceiver(mReceiver, intentFilter);
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-
-    }
-
     void updateUI() {
         Toast.makeText(getContext(), "UI updated", Toast.LENGTH_SHORT).show();
     }
