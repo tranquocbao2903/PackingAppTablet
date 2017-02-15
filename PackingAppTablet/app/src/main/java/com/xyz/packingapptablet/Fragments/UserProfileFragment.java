@@ -36,6 +36,7 @@ public class UserProfileFragment extends android.support.v4.app.Fragment {
     TextView userprofile_status_textview;
     TextView userprofile_baynumber_textview;
     TextView userprofile_payment_textview;
+    ImageView userprofile_reliability_imageview;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -64,6 +65,7 @@ public class UserProfileFragment extends android.support.v4.app.Fragment {
         userprofile_status_textview = (TextView) view.findViewById(R.id.userprofile_status_textview);
         userprofile_baynumber_textview = (TextView) view.findViewById(R.id.userprofile_baynumber_textview);
         userprofile_payment_textview = (TextView) view.findViewById(R.id.userprofile_payment_textview);
+        userprofile_reliability_imageview = (ImageView) view.findViewById(R.id.userprofile_reliability_imageview);
     }
 
     @Override
@@ -88,6 +90,10 @@ public class UserProfileFragment extends android.support.v4.app.Fragment {
                         userprofile_status_textview.setText("Status: " + user.getCar().getStatus());
                         userprofile_baynumber_textview.setText("Bay Nr: " + user.getCar().getBayNr());
                         userprofile_payment_textview.setText("Payment: " + user.getPayment());
+
+                        String imageName = user.getReliability();
+                        int resID = getContext().getResources().getIdentifier(imageName, "drawable", getContext().getPackageName());
+                        userprofile_reliability_imageview.setImageResource(resID);
                     }
                 }
 

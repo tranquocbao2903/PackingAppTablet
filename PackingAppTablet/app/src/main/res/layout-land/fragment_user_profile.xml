@@ -25,10 +25,12 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="User Profile"
-                android:textColor="#fff" />
+                android:textColor="#fff"
+                android:paddingRight="10dp"
+                />
 
             <ImageView
-                android:id="@+id/userprofile_reliability_imageview"
+                android:id="@+id/imageview"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:src="@drawable/confused" />
@@ -41,9 +43,10 @@
             android:gravity="center">
 
             <ImageView
-                android:id="@+id/userprofile_imageview"
+                android:id="@+id/userprofile_reliability_imageview"
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
+                android:scaleType="fitCenter"
                 android:src="@drawable/sad" />
         </LinearLayout>
 
@@ -51,19 +54,20 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="6"
+            android:paddingLeft="30dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/userprofile_name_textview"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:gravity="left"
                 android:textColor="#fff"
                 android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/userprofile_contact_textview"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="#fff"
@@ -71,7 +75,7 @@
 
             <TextView
                 android:id="@+id/userprofile_vehicle_textview"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="#fff"
@@ -79,7 +83,7 @@
 
             <TextView
                 android:id="@+id/userprofile_cartype_textview"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="#fff"
@@ -87,7 +91,7 @@
 
             <TextView
                 android:id="@+id/userprofile_current_textview"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="#fff"
@@ -95,7 +99,7 @@
 
             <TextView
                 android:id="@+id/userprofile_noshows_textview"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="#fff"
@@ -103,7 +107,7 @@
 
             <TextView
                 android:id="@+id/userprofile_status_textview"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="#fff"
@@ -111,7 +115,7 @@
 
             <TextView
                 android:id="@+id/userprofile_baynumber_textview"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="#fff"
@@ -119,7 +123,7 @@
 
             <TextView
                 android:id="@+id/userprofile_payment_textview"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="#fff"
