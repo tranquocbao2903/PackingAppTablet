@@ -2,9 +2,7 @@ package com.xyz.packingapptablet.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,10 +57,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
         @Override
         public void onClick(View v) {
-            Fragment userProfileFragment = ((FragmentActivity) viewHolderContext).getSupportFragmentManager().findFragmentByTag("userProfileFragment");
-            FragmentTransaction fragmentTransaction = ((FragmentActivity) viewHolderContext).getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.show(userProfileFragment);
-            fragmentTransaction.commit();
+
             Intent intent = new Intent();
             intent.setAction("PackingAppBroadcast");
             int pos = getAdapterPosition();

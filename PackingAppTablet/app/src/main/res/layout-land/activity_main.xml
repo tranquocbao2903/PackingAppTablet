@@ -6,48 +6,61 @@
     android:baselineAligned="false"
     android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/user_container"
+    <FrameLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="2"
-        android:orientation="vertical"
-        android:paddingRight="2dp">
+        android:layout_weight="2">
 
-        <TextView
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="#000"
-            android:gravity="center"
-            android:text="Parked Cars"
-            android:textColor="#fff" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingRight="2dp">
 
-        <fragment
-            android:id="@+id/user_fragment"
-            android:name="com.xyz.packingapptablet.Fragments.UserFragment"
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="#000"
+                android:gravity="center"
+                android:text="Parked Cars"
+                android:textColor="#fff" />
+
+            <fragment
+                android:id="@+id/user_fragment"
+                android:name="com.xyz.packingapptablet.Fragments.UserFragment"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="6" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="#000"
+                android:gravity="center"
+                android:text="Incomming"
+                android:textColor="#fff" />
+
+            <fragment
+                android:id="@+id/incomming_fragment"
+                android:name="com.xyz.packingapptablet.Fragments.IncomingFragment"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="6" />
+
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/user_profile_fragment"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="6" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="#000"
-            android:gravity="center"
-            android:text="Incomming"
-            android:textColor="#fff" />
-
-        <fragment
-            android:id="@+id/incomming_fragment"
-            android:name="com.xyz.packingapptablet.Fragments.IncomingFragment"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="6" />
-
-
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:paddingRight="2dp"
+            />
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="0dp"

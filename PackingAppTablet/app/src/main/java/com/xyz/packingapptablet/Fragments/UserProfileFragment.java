@@ -46,8 +46,10 @@ public class UserProfileFragment extends android.support.v4.app.Fragment {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Fragment userProfileFragment = (getActivity()).getSupportFragmentManager().findFragmentByTag("userProfileFragment");
                 FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.setCustomAnimations(0, R.anim.exit_anim);
                 fragmentTransaction.hide(userProfileFragment);
                 fragmentTransaction.commit();
             }
@@ -76,6 +78,13 @@ public class UserProfileFragment extends android.support.v4.app.Fragment {
         mReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
+
+                Fragment userProfileFragment = (getActivity()).getSupportFragmentManager().findFragmentByTag("userProfileFragment");
+                FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.setCustomAnimations(R.anim.enter_anim, 0);
+                fragmentTransaction.show(userProfileFragment);
+                fragmentTransaction.commit();
+
                 updateUI();
                 Bundle extras = intent.getExtras();
                 if (extras != null) {
