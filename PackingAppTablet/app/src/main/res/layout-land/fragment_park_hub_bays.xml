@@ -34,7 +34,7 @@
             android:layout_height="0dp"
             android:layout_weight="6"
             android:background="#000"
-            android:gravity="center"
+            android:gravity="center|top"
             android:orientation="horizontal">
 
             <GridView
@@ -53,13 +53,14 @@
             android:layout_height="0dp"
             android:layout_weight="3"
             android:background="#000"
-            android:gravity="center"
+            android:gravity="center|top"
             android:orientation="vertical">
 
             <Button
                 android:id="@+id/updateAvailability"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/holo_green_dark"
                 android:text="Update availability"
                 android:textSize="12sp" />
 
@@ -67,6 +68,7 @@
                 android:id="@+id/reportAbuse"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/holo_green_dark"
                 android:text="Report abuse"
                 android:textSize="12sp" />
         </LinearLayout>

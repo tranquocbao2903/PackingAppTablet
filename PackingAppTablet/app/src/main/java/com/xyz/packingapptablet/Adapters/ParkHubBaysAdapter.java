@@ -43,6 +43,7 @@ public class ParkHubBaysAdapter extends BaseAdapter {
         final Button bayNumber;
         if (convertView == null) {
             bayNumber = new Button(context);
+
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(GridLayout.LayoutParams.WRAP_CONTENT, GridLayout.LayoutParams.WRAP_CONTENT);
             params.gravity = Gravity.CENTER;
             bayNumber.setLayoutParams(params);
