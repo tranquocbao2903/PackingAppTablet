@@ -12,7 +12,6 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.xyz.packingapptablet.Models.BayModel;
 
@@ -56,7 +55,6 @@ public class ParkHubBaysAdapter extends BaseAdapter {
                 public void onClick(View v) {
 
                     BayModel editedBayModel = parkhubBays.get(position);
-                    Toast.makeText(context, position + "", Toast.LENGTH_SHORT).show();
                     editedBayModel.setState(!editedBayModel.isState());
                     editedBayModel.setStateColor(editedBayModel.isState() ? Color.parseColor("#ff9933") : Color.parseColor("#009933"));
                     editedBayModel.setBayNumber(parkhubBays.get(position).getBayNumber());

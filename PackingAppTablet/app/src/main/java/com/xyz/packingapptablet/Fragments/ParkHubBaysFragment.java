@@ -16,6 +16,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import com.xyz.packingapptablet.Adapters.ParkHubBaysAdapter;
+import com.xyz.packingapptablet.Interfaces.IParkHubBays;
 import com.xyz.packingapptablet.Models.BayModel;
 import com.xyz.packingapptablet.R;
 
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ParkHubBaysFragment extends Fragment implements View.OnClickListener {
+public class ParkHubBaysFragment extends Fragment implements View.OnClickListener, IParkHubBays {
 
     ArrayList<BayModel> parkhubBaysData = new ArrayList<>();
     ArrayList<BayModel> parkhubBays = new ArrayList<>();
@@ -88,33 +89,16 @@ public class ParkHubBaysFragment extends Fragment implements View.OnClickListene
 
     }
 
-    //    void createData(int page, int pageCount) {
-//
-//        parkhubBays.clear();
-//
-//        int realPageCount = (page * pageCount) + pageCount;
-//
-//        if (realPageCount > parkhubSlots) {
-//
-//            realPageCount = (page * pageCount) + parkhubSlots - ((page * pageCount));
-//
-//        }
-//
-//        for (int i = page * pageCount + 1; i <= realPageCount; i++) {
-//            //parkhubBays.add(String.valueOf(i));
-//        }
-//        parhubBaysAdapter.notifyDataSetChanged();
-//
-//    }
-
-    void getParkhubData() {
+    @Override
+    public void getParkhubData() {
         for (int i = 0; i < parkhubSlots; i++) {
             BayModel bayModel = new BayModel(false, Color.parseColor("#009933"), i);
             parkhubBaysData.add(bayModel);
         }
     }
 
-    void initialBaysData(int pageNumber, int pageCount) {
+    @Override
+    public void initialBaysData(int pageNumber, int pageCount) {
         parkhubBays.clear();
 
         int realPageCount = (pageNumber * pageCount) + pageCount;
@@ -131,8 +115,9 @@ public class ParkHubBaysFragment extends Fragment implements View.OnClickListene
         parhubBaysAdapter.notifyDataSetChanged();
     }
 
-    void createData(int pageCount) {
-        for(int i = 0; i < pageCount; i++) {
+    @Override
+    public void createData(int pageCount) {
+        for (int i = 0; i < pageCount; i++) {
             parkhubBays.add(parkhubBaysData.get(i));
         }
     }
@@ -165,4 +150,5 @@ public class ParkHubBaysFragment extends Fragment implements View.OnClickListene
         }
 
     }
+
 }
