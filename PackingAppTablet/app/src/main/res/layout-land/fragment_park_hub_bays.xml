@@ -42,10 +42,10 @@
                 android:layout_width="300dp"
                 android:layout_height="300dp"
                 android:gravity="center"
-                android:horizontalSpacing="10dp"
+                android:horizontalSpacing="5dp"
                 android:numColumns="4"
                 android:stretchMode="columnWidth"
-                android:verticalSpacing="10dp" />
+                android:verticalSpacing="5dp" />
 
         </LinearLayout>
 
@@ -61,7 +61,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
-                android:background="#ffcc00"
+                android:background="#006699"
                 android:text="Previous"
                 android:textColor="#fff" />
 
@@ -79,7 +79,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:background="#ffcc00"
+                android:background="#006699"
                 android:text="Next"
                 android:textColor="#fff" />
 

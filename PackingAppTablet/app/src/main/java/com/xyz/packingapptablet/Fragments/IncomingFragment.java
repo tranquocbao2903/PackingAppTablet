@@ -55,7 +55,7 @@ public class IncomingFragment extends Fragment {
         mReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                updateUI();
+                //updateUI();
             }
         };
         getActivity().registerReceiver(mReceiver, intentFilter);

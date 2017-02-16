@@ -79,17 +79,16 @@ public class UserProfileFragment extends android.support.v4.app.Fragment {
             @Override
             public void onReceive(Context context, Intent intent) {
 
-                Fragment userProfileFragment = (getActivity()).getSupportFragmentManager().findFragmentByTag("userProfileFragment");
-                FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.setCustomAnimations(R.anim.enter_anim, 0);
-                fragmentTransaction.show(userProfileFragment);
-                fragmentTransaction.commit();
-
-                updateUI();
+                //updateUI();
                 Bundle extras = intent.getExtras();
                 if (extras != null) {
-                    UserModel user = ((UserModel) extras.get("userModel"));
                     if (extras.containsKey("userModel")) {
+                        Fragment userProfileFragment = (getActivity()).getSupportFragmentManager().findFragmentByTag("userProfileFragment");
+                        FragmentTransaction fragmentTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.setCustomAnimations(R.anim.enter_anim, 0);
+                        fragmentTransaction.show(userProfileFragment);
+                        fragmentTransaction.commit();
+                        UserModel user = ((UserModel) extras.get("userModel"));
                         userprofile_name_textview.setText("Name: " + user.getName());
                         userprofile_contact_textview.setText("Contact: " + user.getContact());
                         userprofile_vehicle_textview.setText("Vehicle: " + user.getCar().getVehicle());

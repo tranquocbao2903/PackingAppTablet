@@ -3,6 +3,7 @@ package com.xyz.packingapptablet.Adapters;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.view.Gravity;
 import android.view.View;
@@ -11,16 +12,17 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import com.xyz.packingapptablet.Models.BayModel;
 
 import java.util.ArrayList;
 
-import static android.graphics.Color.GREEN;
-
 public class ParkHubBaysAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList<String> parkhubBays;
+    private ArrayList<BayModel> parkhubBays;
 
-    public ParkHubBaysAdapter(Context c, ArrayList<String> bays) {
+    public ParkHubBaysAdapter(Context c, ArrayList<BayModel> bays) {
         context = c;
         parkhubBays = bays;
     }
@@ -39,30 +41,37 @@ public class ParkHubBaysAdapter extends BaseAdapter {
 
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         final Button bayNumber;
-        if (convertView == null) {
+
             bayNumber = new Button(context);
 
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(GridLayout.LayoutParams.WRAP_CONTENT, GridLayout.LayoutParams.WRAP_CONTENT);
             params.gravity = Gravity.CENTER;
             bayNumber.setLayoutParams(params);
             bayNumber.setTextSize(15);
-            bayNumber.setBackgroundColor(GREEN);
+            bayNumber.setBackgroundColor(parkhubBays.get(position).getStateColor());
             bayNumber.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    BayModel editedBayModel = parkhubBays.get(position);
+                    Toast.makeText(context, position + "", Toast.LENGTH_SHORT).show();
+                    editedBayModel.setState(!editedBayModel.isState());
+                    editedBayModel.setStateColor(editedBayModel.isState() ? Color.parseColor("#ff9933") : Color.parseColor("#009933"));
+                    editedBayModel.setBayNumber(parkhubBays.get(position).getBayNumber());
+                    bayNumber.setBackgroundColor(editedBayModel.getStateColor());
+
                     Intent intent = new Intent();
                     intent.setAction("PackingAppBroadcast");
-                    intent.putExtra("dataReceived", bayNumber.getText().toString());
+                    intent.putExtra("editedBayModel", editedBayModel);
                     context.sendBroadcast(intent);
+
                 }
             });
-        } else {
-            bayNumber = (Button) convertView;
-        }
 
-        bayNumber.setText(parkhubBays.get(position));
+
+        bayNumber.setText(String.valueOf(parkhubBays.get(position).getBayNumber()));
         return bayNumber;
     }
 

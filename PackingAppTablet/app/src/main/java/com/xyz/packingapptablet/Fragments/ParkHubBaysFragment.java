@@ -1,6 +1,11 @@
 package com.xyz.packingapptablet.Fragments;
 
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,6 +16,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import com.xyz.packingapptablet.Adapters.ParkHubBaysAdapter;
+import com.xyz.packingapptablet.Models.BayModel;
 import com.xyz.packingapptablet.R;
 
 import java.util.ArrayList;
@@ -20,7 +26,8 @@ import java.util.ArrayList;
  */
 public class ParkHubBaysFragment extends Fragment implements View.OnClickListener {
 
-    ArrayList<String> parkhubBays = new ArrayList<>();
+    ArrayList<BayModel> parkhubBaysData = new ArrayList<>();
+    ArrayList<BayModel> parkhubBays = new ArrayList<>();
 
     GridView gvBays;
     Button buttonPreviousPage;
@@ -51,37 +58,83 @@ public class ParkHubBaysFragment extends Fragment implements View.OnClickListene
         buttonPreviousPage.setOnClickListener(this);
 
         pagenumberTextView.setText((pageNumber + 1) + "");
-        initialData(pageCount);
+        getParkhubData();
+        createData(pageCount);
         parhubBaysAdapter = new ParkHubBaysAdapter(getActivity(), parkhubBays);
         gvBays.setAdapter(parhubBaysAdapter);
         return view;
     }
 
-    void createData(int page, int pageCount) {
+    @Override
+    public void onResume() {
+        super.onResume();
 
-        parkhubBays.clear();
-
-        int realPageCount = (page * pageCount) + pageCount;
-
-        if (realPageCount > parkhubSlots) {
-
-            realPageCount = (page * pageCount) + parkhubSlots - ((page * pageCount));
-
-        }
-
-        for (int i = page * pageCount + 1; i <= realPageCount; i++) {
-            parkhubBays.add(String.valueOf(i));
-        }
-        parhubBaysAdapter.notifyDataSetChanged();
+        IntentFilter intentFilter = new IntentFilter(
+                "PackingAppBroadcast");
+        BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Bundle extras = intent.getExtras();
+                if (extras != null) {
+                    if (extras.containsKey("editedBayModel")) {
+                        BayModel bayModel = ((BayModel) extras.get("editedBayModel"));
+                        parkhubBaysData.set(bayModel.getBayNumber(), bayModel);
+                        //Toast.makeText(context, parkhubBaysData.get(bayModel.getBayNumber()).getBayNumber() + "'", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        };
+        getActivity().registerReceiver(broadcastReceiver, intentFilter);
 
     }
 
-    void initialData(int pageCount) {
+    //    void createData(int page, int pageCount) {
+//
+//        parkhubBays.clear();
+//
+//        int realPageCount = (page * pageCount) + pageCount;
+//
+//        if (realPageCount > parkhubSlots) {
+//
+//            realPageCount = (page * pageCount) + parkhubSlots - ((page * pageCount));
+//
+//        }
+//
+//        for (int i = page * pageCount + 1; i <= realPageCount; i++) {
+//            //parkhubBays.add(String.valueOf(i));
+//        }
+//        parhubBaysAdapter.notifyDataSetChanged();
+//
+//    }
 
-        for (int i = 1; i <= pageCount; i++) {
-            parkhubBays.add(i + "");
+    void getParkhubData() {
+        for (int i = 0; i < parkhubSlots; i++) {
+            BayModel bayModel = new BayModel(false, Color.parseColor("#009933"), i);
+            parkhubBaysData.add(bayModel);
+        }
+    }
+
+    void initialBaysData(int pageNumber, int pageCount) {
+        parkhubBays.clear();
+
+        int realPageCount = (pageNumber * pageCount) + pageCount;
+
+        if (realPageCount > parkhubSlots) {
+
+            realPageCount = (pageNumber * pageCount) + parkhubSlots - ((pageNumber * pageCount));
+
         }
 
+        for (int i = pageNumber * pageCount; i < realPageCount; i++) {
+            parkhubBays.add(parkhubBaysData.get(i));
+        }
+        parhubBaysAdapter.notifyDataSetChanged();
+    }
+
+    void createData(int pageCount) {
+        for(int i = 0; i < pageCount; i++) {
+            parkhubBays.add(parkhubBaysData.get(i));
+        }
     }
 
     @Override
@@ -94,7 +147,7 @@ public class ParkHubBaysFragment extends Fragment implements View.OnClickListene
                 if (pageNumber < (parkhubSlots / pageCount)) {
                     pageNumber = pageNumber + 1;
                     pagenumberTextView.setText((pageNumber + 1) + "");
-                    createData(pageNumber, pageCount);
+                    initialBaysData(pageNumber, pageCount);
                 }
 
                 break;
@@ -104,7 +157,7 @@ public class ParkHubBaysFragment extends Fragment implements View.OnClickListene
                 if (pageNumber > 0) {
                     pageNumber = pageNumber - 1;
                     pagenumberTextView.setText((pageNumber + 1) + "");
-                    createData(pageNumber, pageCount);
+                    initialBaysData(pageNumber, pageCount);
                 }
 
                 break;
