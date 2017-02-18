@@ -38,7 +38,7 @@ public class ParkHubBaysFragment extends Fragment implements View.OnClickListene
     ParkHubBaysAdapter parhubBaysAdapter;
 
     int pageNumber = 0;
-    int pageCount = 30;
+    public static int pageCount = 20;
     int parkhubSlots = 100;
 
     public ParkHubBaysFragment() {
@@ -50,10 +50,7 @@ public class ParkHubBaysFragment extends Fragment implements View.OnClickListene
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_park_hub_bays, container, false);
-        gvBays = (GridView) view.findViewById(R.id.parkhubBays);
-        buttonNextPage = (Button) view.findViewById(R.id.next_parkhub_bay_button);
-        buttonPreviousPage = (Button) view.findViewById(R.id.previous_parkhub_bay_button);
-        pagenumberTextView = (TextView) view.findViewById(R.id.pagenumber_parkhub_textview);
+        initReference(view);
 
         buttonNextPage.setOnClickListener(this);
         buttonPreviousPage.setOnClickListener(this);
@@ -66,6 +63,12 @@ public class ParkHubBaysFragment extends Fragment implements View.OnClickListene
         return view;
     }
 
+    private void initReference(View view) {
+        gvBays = (GridView) view.findViewById(R.id.parkhubBays);
+        buttonNextPage = (Button) view.findViewById(R.id.next_parkhub_bay_button);
+        buttonPreviousPage = (Button) view.findViewById(R.id.previous_parkhub_bay_button);
+        pagenumberTextView = (TextView) view.findViewById(R.id.pagenumber_parkhub_textview);
+    }
     @Override
     public void onResume() {
         super.onResume();

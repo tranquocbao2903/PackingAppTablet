@@ -29,6 +29,7 @@ public class IncomingFragment extends Fragment {
     ArrayList<UserModel> users = new ArrayList<>();
 
     private BroadcastReceiver mReceiver;
+    RecyclerView rvIncoming;
 
     public IncomingFragment() {
         // Required empty public constructor
@@ -39,12 +40,18 @@ public class IncomingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_incoming, container, false);
-        RecyclerView rvIncoming = (RecyclerView) view.findViewById(R.id.rvIncoming);
+        initReference(view);
         createData();
         IncomingAdapter adapter = new IncomingAdapter(this.getActivity(), users);
         rvIncoming.setAdapter(adapter);
         rvIncoming.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         return view;
+    }
+
+
+    private void initReference(View view) {
+        rvIncoming = (RecyclerView) view.findViewById(R.id.rvIncoming);
+
     }
 
     @Override

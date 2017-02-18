@@ -19,6 +19,7 @@ import java.util.ArrayList;
 public class UserFragment extends Fragment {
 
     ArrayList<UserModel> users = new ArrayList<>();
+    RecyclerView rvUsers;
 
     public UserFragment() {
         // Required empty public constructor
@@ -29,12 +30,16 @@ public class UserFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user, container, false);
-        RecyclerView rvUsers = (RecyclerView) view.findViewById(R.id.rvUsers);
+        initReference(view);
         createData();
         UserAdapter adapter = new UserAdapter(this.getActivity(), users);
         rvUsers.setAdapter(adapter);
         rvUsers.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         return view;
+    }
+
+    private void initReference(View view) {
+         rvUsers = (RecyclerView) view.findViewById(R.id.rvUsers);
     }
 
     void createData() {
